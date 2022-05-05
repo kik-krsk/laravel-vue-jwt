@@ -11,11 +11,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../api */ "./resources/js/api.js");
 //
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "Index",
+  data: function data() {
+    return {
+      fruits: null,
+      api: null
+    };
+  },
+  mounted: function mounted() {
+    this.getFruits();
+  },
+  methods: {
+    getFruits: function getFruits() {
+      var _this = this;
+
+      _api__WEBPACK_IMPORTED_MODULE_0__["default"].get("/api/auth/fruits").then(function (res) {
+        _this.fruits = res.data.data;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -103,9 +142,42 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [_vm._v("list of fruits")])
+  return _c("div", { staticClass: "container" }, [
+    _c("table", { staticClass: "table" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.fruits, function (fruit) {
+          return _c("tr", [
+            _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(fruit.id))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(fruit.name))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(fruit.price))]),
+          ])
+        }),
+        0
+      ),
+    ]),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
